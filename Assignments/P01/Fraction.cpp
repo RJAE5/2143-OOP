@@ -146,7 +146,7 @@ Fraction Fraction::operator +(const Fraction& next)
 	lhs.numer = this->numer;	// Assignment for lhs fraction
 	lhs.denom = this->denom;	
 	
-	rhs = next;					// Assignment for rhs fraction
+	rhs = next;					      // Assignment for rhs fraction
 
 	rhs.numer *= lhs.denom;		// Multiply rhs by lhs denom to achieve denom with common multiple
 	rhs.denom *= lhs.denom;
@@ -259,11 +259,24 @@ Fraction Fraction::operator / (const Fraction& next)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     bool			:  Indication of fractions being equal to eachother or not
+  *     bool			:  Indication of fractions being equal to eachother, 
+  *                  regardless of the fractioning being fully reduced or not
+  * 
   */
 bool Fraction::operator == (const Fraction& next)
 {
-	return (this->numer == next.numer && this->denom == next.denom);	//Equality Statement for bool
+  Fraction lhs, rhs;
+
+  lhs.numer = this->numer;    // Temporary assignment
+  lhs.denom = this->denom;
+
+  rhs.numer = next.numer;     // Temporary assignment
+  rhs.denom = next.denom;
+
+  lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));   // Reduce temporary fractions
+  rhs = reduce(rhs, GCD(rhs.numer, rhs.denom));
+
+	return (lhs.numer == rhs.numer && lhs.denom == rhs.denom);	//Equality Statement for bool
 }
 
 
