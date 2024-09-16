@@ -7,10 +7,13 @@ a valid linux environment within WSL.
 
 ### Files
 
-|   #   | File                                                      | Description                                        |
-| :---: | --------------------------------------------------------- | -------------------------------------------------- |
-|   1   | [A05_screenshot](./Assignments/A05/A05_screenshot)        | Screenshot to prove my use of WSL.                 |
+|   #   | File                                                          | Description                                        |
+| :---: | ------------------------------------------------------------- | -------------------------------------------------- |
+|   1   | [A05_screenshot](./Assignments/A05/A05_screenshot.png)        | Screenshot to prove my use of WSL.                 |
 
+
+
+<img src=A05_screenshot.png width=1000>
 
 ### Instructions
 
