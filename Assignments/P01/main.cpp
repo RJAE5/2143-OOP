@@ -11,8 +11,8 @@
 *        This Program explores overloading operators to simply do arithmetic with Fractions 
 *
 *  Usage:
-*        Call ./main and either input fractions directly into terminal or input fractions
-*        into `data.txt`. It should be in the format `x/y + j/k$` and reference the file 
+*        Call `./main` and either input fractions directly into terminal or input fractions
+*        into `data.txt`. It should be in the format `x/y + j/k` and reference the file 
 *        using `./main < data.txt`. The correct answer will be displayed to the console
 *       
 *
