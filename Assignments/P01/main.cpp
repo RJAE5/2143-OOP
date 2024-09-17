@@ -31,16 +31,13 @@ using namespace std;
 
 #define MAX_PROB_LENGTH 30                                          // Max number of chars for any problem
 
-
 int main(int argc, char *argv[])
 {
-    
     string op;                                                      // Variable for fraction operator
     char problem[MAX_PROB_LENGTH];                                  // Array for problem
     
     for(int i = 0; i < MAX_PROB_LENGTH; i++)                        // Fill char array with stop characters
         {problem[i] = '$';}         
-
 
     while(cin.getline(problem, MAX_PROB_LENGTH))                    // Loop for each line in file
     {
@@ -62,8 +59,7 @@ int main(int argc, char *argv[])
         while(problem[count] != '/')                                // Increment count to end of numerator 1
             {count++;}
             
-            stop = count - 1;                                       // Stop for the for loop
-
+            stop = count - 1;                                       // Stop indicator for the for loop
 
         for(int i = stop; i >= 0; i--)              
             {n1 += (problem[(stop) - i] - 48) * (pow(10,i));}       // Convert numerator 1 from chars to integer
@@ -86,7 +82,7 @@ int main(int argc, char *argv[])
         {
             do
             {
-                count++;
+                count++;                                            // Skip spaces to find operator
             } while(problem[count] != '+' && problem[count] != '-' && problem[count] != '*' && problem[count] != '/');
             
             op = problem[count];                                    // Alternatively read in operator because of spaces
@@ -118,11 +114,12 @@ int main(int argc, char *argv[])
         for(int i = 0; i < count - stop; i++)
             {d2 += (problem[(count - 1) - i] - 48) * (pow(10,i));}  // Convert denominator 2 from chars to integers
 
+
         Fraction F1(n1, d1);                                        // Fraction creation
         Fraction F2(n2, d2);
         Fraction ans;
 
-        if(op == "+")                                                // if else chain to do correct arithmetic
+        if(op == "+")                                               // if else chain to do correct arithmetic
         ans = F1 + F2;
 
         else if(op == "-")
@@ -142,7 +139,7 @@ int main(int argc, char *argv[])
         for(int i = 0; i < MAX_PROB_LENGTH; i++)                                // Wipe problem array 
             {problem[i] = '$';}
 
-            count = 0;
+            count = 0;                                                          // Reset count
     }// End getline while loop
     
     return 0;
