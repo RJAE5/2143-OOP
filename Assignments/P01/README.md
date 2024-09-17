@@ -19,4 +19,4 @@ The correct answer will be displayed to the console following a restatement of t
 
 - Example Command:
     - `./main < data.txt`
-    - `./main ` and then enter `1/2 + 5/7`
+    - `./main` and then enter `1/2 + 5/7`
