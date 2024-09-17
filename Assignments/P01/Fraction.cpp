@@ -1,22 +1,22 @@
-/**
+/*
  * Fraction Class
  *
  * Description:
- *      This class encapsulates functions and overaloads operators to
- *		achieve the ability to do arithmetic on fractions
+ *      This class encapsulates functions and overloads operators to
+ *		  achieve the ability to do arithmetic on instances of type fraction
  *
  * Public Methods:
- *		      - Fraction()
- *		   	  - Fraction(int n, int d)
+ *		        - Fraction()
+ *		   	    - Fraction(int n, int d)
  *	ostream	  - operator << (ostream& os, const Fraction& next)
  *	Fraction  - operator + (const Fraction& next)
  *  Fraction  - operator - (const Fraction& next)
  *  Fraction  - operator * (const Fraction& next)
  *  Fraction  - operator / (const Fraction& next)
- *	bool	  - operator == (const Fration& next)
+ *	bool	    - operator == (const Fration& next)
  *
  * Private Methods:
- *	int		  - GCD(int a, int b)
+ *	int		    - GCD(int a, int b)
  *	Fraction  - reduce(Fraction f, int GCD)
  *
  * Usage:
@@ -28,11 +28,12 @@
 #include "Fraction.h"
 
 
- /**
+ /*
   * Private : GCD
   *
   * Description:
-  *      Recursive function to get increasingly big common divisor of both the numerator and denominator. Used to reduce fractions.
+  *      Recursive function to get increasingly big common divisor 
+  *      of both the numerator and denominator. Used to reduce fractions.
   *
   * Params:
   *     int      :  original numerator
@@ -278,6 +279,5 @@ bool Fraction::operator == (const Fraction& next)
 
 	return (lhs.numer == rhs.numer && lhs.denom == rhs.denom);	//Equality Statement for bool
 }
-
 
 // End implementation
