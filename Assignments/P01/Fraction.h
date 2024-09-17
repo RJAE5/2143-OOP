@@ -9,18 +9,14 @@
 *
 *******************************************************************************/
 
-
 #include <iostream>
 using namespace std;
-
-
 
 class Fraction
 {
 
 	int numer;
 	int denom;
-
 
 	int GCD(int, int);
 	Fraction reduce(Fraction, int);
@@ -31,16 +27,11 @@ public:
 	Fraction();
 	Fraction(int, int);
 
-	// Member functions
-	/*void print();*/
-
 	// Operator overloads
 	friend ostream& operator<<(ostream&, const Fraction&);
 	Fraction operator + (const Fraction&);
 	Fraction operator - (const Fraction&);
 	Fraction operator * (const Fraction&);
 	Fraction operator / (const Fraction&);
-	bool operator == (const Fraction&);
-	
-
-};
+	bool operator    == (const Fraction&);
+}; // End header
