@@ -5,6 +5,7 @@
 *  Label:            P01
 *  Title:            Fraction Class
 *  Course:           CMPS 2143 OOP
+*  Professor:        Terry Griffin
 *  Semester:         Fall 2024
 *
 *  Description:
@@ -31,7 +32,7 @@ using namespace std;
 
 #define MAX_PROB_LENGTH 30                                          // Max number of chars for any problem
 
-int main(int argc, char *argv[])
+int main()
 {
     string op;                                                      // Variable for fraction operator
     char problem[MAX_PROB_LENGTH];                                  // Array for problem

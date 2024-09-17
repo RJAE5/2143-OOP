@@ -5,6 +5,7 @@
 *  Label:            P01
 *  Title:            Fraction Class
 *  Course:           CMPS 2143 OOP
+*  Professor:  		 Terry Grffin
 *  Semester:         Fall 2024
 *
 *******************************************************************************/
