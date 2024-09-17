@@ -13,5 +13,5 @@
 |  4  | [data.txt](./Assignments/P01/data.txt)           |  Data file to list several fractions                 |
 
 ### Instructions:
-Call `./main` and either input fractions directly into terminal or input fractions into `data.txt` using x/y + j/k format and reference the file using  `./main < data.txt` 
+Call `./main` and either input fractions directly into terminal or input fractions into `data.txt` using `x/y + j/k` format and reference the file using  `./main < data.txt` 
 The correct answer will be displayed to the console
