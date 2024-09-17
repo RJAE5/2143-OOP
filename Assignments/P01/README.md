@@ -7,7 +7,7 @@ This program explores overloading operators to be able to simply do arithmetic w
 ### Files:
 |  #  | File                             | File Description                                     |
 | :-: | -------------------------------- | ---------------------------------------------------- |
-|  1  | [main.cpp](./main.cpp)           |  Main file which reads in from command line.         |
+|  1  | [main.cpp](./main.cpp)           |  Main file which reads in from data file.            |
 |  2  | [Fraction.cpp](./Fraction.cpp)   |  Class file for operator overloads and other func.   |
 |  3  | [Fraction.h](./Fraction.h)       |  Header file for fraction class                      |
 |  4  | [data.txt](./data.txt)           |  Data file to list several fractions                 |
