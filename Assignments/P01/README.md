@@ -13,5 +13,10 @@ This program explores overloading operators to be able to simply do arithmetic w
 |  4  | [data.txt](./data.txt)           |  Data file to list several fractions                 |
 
 ### Instructions:
-Call `./main` and either input fractions directly into terminal or input fractions into `data.txt` using `x/y + j/k` format and reference the file using  `./main < data.txt` 
-The correct answer will be displayed to the console.
+Input fractions directly into `data.txt` using `x/y + j/k` format and reference the file using  `./main < data.txt`
+Alternatively, call `./main` and enter fractions directly into the terminal, using `ctrl ` + `z` to exit runtime.
+The correct answer will be displayed to the console following a restatement of the fraction operation.
+
+- Example Command:
+    - `./main < data.txt`
+    - `./main ` and then enter `1/2 + 5/7`
