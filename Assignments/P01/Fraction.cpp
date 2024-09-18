@@ -178,7 +178,8 @@ Fraction Fraction::operator -(const Fraction& next)
 {
 	if (this->denom == next.denom)                           // Early Exit Conditional if denoms are already equal
 	{
-		Fraction temp; temp.numer = this->numer - next.numer;                 // Operation stored in temp fraction
+		Fraction temp;
+    temp.numer = this->numer - next.numer;                 // Operation stored in temp fraction
 		temp.denom = this->denom;
 		return temp;
 	}
