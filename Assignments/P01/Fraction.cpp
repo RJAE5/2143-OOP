@@ -44,7 +44,7 @@
   */
 int Fraction::GCD(int a, int b)
 {
-	if (b == 0)						// Base Case
+	if (b == 0)						    // Base Case
 		return a;
 
 	else
