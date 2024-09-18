@@ -3,26 +3,27 @@
  *
  * Description:
  *      This class encapsulates functions and overloads operators to
- *		  achieve the ability to do arithmetic on instances of type fraction
+ *      achieve the ability to do arithmetic on instances of type fraction
  *
  * Public Methods:
- *		        - Fraction()
- *		   	    - Fraction(int n, int d)
- *	ostream	  - operator << (ostream& os, const Fraction& next)
+ *            - Fraction()
+ *            - Fraction(int n, int d)
+ *	ostream   - operator << (ostream& os, const Fraction& next)
  *	Fraction  - operator + (const Fraction& next)
  *  Fraction  - operator - (const Fraction& next)
  *  Fraction  - operator * (const Fraction& next)
  *  Fraction  - operator / (const Fraction& next)
- *	bool	    - operator == (const Fration& next)
+ *	bool      - operator == (const Fration& next)
  *
  * Private Methods:
- *	int		    - GCD(int a, int b)
+ *	int       - GCD(int a, int b)
  *	Fraction  - reduce(Fraction f, int GCD)
  *
  * Usage:
  *
- *			 - examples of how
- *			 - to use your class
+ *       - This class can create fractions and subsequently
+ *         do arithmetic with them using simple operators
+ *
  */
 
 #include "Fraction.h"
@@ -44,18 +45,18 @@
   */
 int Fraction::GCD(int a, int b)
 {
-	if (b == 0)						    // Base Case
-		return a;
+	if (b == 0)                 // Base Case
+		return a; 
 
 	else
-		return GCD(b, a % b);		// Recursive call
+		return GCD(b, a % b);     // Recursive call
 }
 
 /**
   * Private : reduce
   *
   * Description:
-  *      Simply divide numerator and denominator by their GCD to achieve reduced fraction
+  *     Simply divide numerator and denominator by their GCD to achieve reduced fraction
   *
   * Params:
   *     Fraction :  original fraction
@@ -66,7 +67,7 @@ int Fraction::GCD(int a, int b)
   */
 Fraction Fraction::reduce(Fraction f, int GCD)
 {
-	f.numer /= GCD;		// Divide numer and denom by GCD to achieve reduced fraction
+	f.numer /= GCD;             // Divide numer and denom by GCD to achieve reduced fraction
 	f.denom /= GCD;
 
 	return f;
@@ -76,7 +77,7 @@ Fraction Fraction::reduce(Fraction f, int GCD)
   * Public : Fraction
   *
   * Description:
-  *      Default constructor to create a 1/1 fraction
+  *     Default constructor to create a 1/1 fraction
   *
   * Params:
   *     None
@@ -86,7 +87,7 @@ Fraction Fraction::reduce(Fraction f, int GCD)
   */
 Fraction::Fraction()
 {
-	numer = denom = 1;		// Default construction of 1/1 fraction
+	numer = denom = 1;          // Default construction of 1/1 fraction
 }
 
 /**
@@ -96,16 +97,16 @@ Fraction::Fraction()
   *      Overloaded constructor to create a custom fraction
   *
   * Params:
-  *     int      :  numerator
-  *     int      :  denominator
+  *      int      :  numerator
+  *      int      :  denominator
   *
   * Returns:
-  *     None
+  *      None
   */
 Fraction::Fraction(int n, int d)
 {
-	numer = n;		// Assignment for numerator
-	denom = d;		// Assignment for denominator
+	numer = n;                  // Assignment for numerator
+	denom = d;                  // Assignment for denominator
 }
 
 
@@ -113,18 +114,18 @@ Fraction::Fraction(int n, int d)
   * Public : operator <<
   *
   * Description:
-  *      Overload insertion operator to simply cout fractions
+  *     Overload insertion operator to simply cout fractions
   *
   * Params:
   *     ostream&        :  Location of output stream
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     ostream&	      :  Fraction numerator followed by a "/" then the denominator
+  *     ostream&        :  Fraction numerator followed by a "/" then the denominator
   */
 ostream& operator << (ostream& os, const Fraction& next)
 {
-	return os << next.numer << "/" << next.denom;		// Ability to cout fractions
+	return os << next.numer << "/" << next.denom;		         // Ability to cout fractions
 }
 
 /**
@@ -134,29 +135,29 @@ ostream& operator << (ostream& os, const Fraction& next)
   *      Overload addition operator to simply add fractions
   *
   * Params:
-  *     const Fraction& :  Address of the fraction to the right of the operator
+  *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	      :  Correctly added and reduced fraction
+  *      Fraction        :  Correctly added and reduced fraction
   */
 Fraction Fraction::operator +(const Fraction& next)
 {
 	Fraction lhs, rhs;
 
 	
-	lhs.numer = this->numer;	// Assignment for lhs fraction
+	lhs.numer = this->numer;                                 // Assignment for lhs fraction
 	lhs.denom = this->denom;	
 	
-	rhs = next;					      // Assignment for rhs fraction
+	rhs = next;                                              // Assignment for rhs fraction
 
-	rhs.numer *= lhs.denom;		// Multiply rhs by lhs denom to achieve denom with common multiple
+	rhs.numer *= lhs.denom;                                  // Multiply rhs by lhs denom to achieve denom with common multiple
 	rhs.denom *= lhs.denom;
-	lhs.numer *= next.denom;	// Multiply lhs by original rhs denom to achieve equal denominator
+	lhs.numer *= next.denom;                                 // Multiply lhs by original rhs denom to achieve equal denominator
 	lhs.denom *= next.denom;
 
-	lhs.numer += rhs.numer;		// Add numerators to complete operation
+	lhs.numer += rhs.numer;                                  // Add numerators to complete operation
 
-	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));	// Reduce fraction
+	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));	           // Reduce fraction
 
 	return lhs;
 }
@@ -168,37 +169,37 @@ Fraction Fraction::operator +(const Fraction& next)
   *      Overload subtraction operator to simply subtract fractions
   *
   * Params:
-  *     const Fraction& :  Address of the fraction to the right of the operator
+  *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	      :  Correctly subtracted and reduced fraction
+  *      Fraction         :  Correctly subtracted and reduced fraction
   */
 Fraction Fraction::operator -(const Fraction& next)
 {
-	if (this->denom == next.denom)				    // Early Exit Conditional if denoms are already equal
+	if (this->denom == next.denom)                           // Early Exit Conditional if denoms are already equal
 	{
 		Fraction temp;
-		temp.numer = this->numer - next.numer;	// Operation stored in temp fraction
+		temp.numer = this->numer - next.numer;                 // Operation stored in temp fraction
 		temp.denom = this->denom;
 		return temp;
 	}
 
-	Fraction lhs, rhs;					  // create lhs and rhs fractions
+	Fraction lhs, rhs;                                       // create lhs and rhs fractions
 	
 
-	lhs.numer = this->numer;			// Assignment for lhs fraction
+	lhs.numer = this->numer;                                 // Assignment for lhs fraction
 	lhs.denom = this->denom;
 
-	rhs = next;							      // Assignment for rhs fraction
+	rhs = next;                                              // Assignment for rhs fraction
 
-	rhs.numer *= lhs.denom;				// Multiply rhs by lhs denom to achieve denom with common multiple
+	rhs.numer *= lhs.denom;                                  // Multiply rhs by lhs denom to achieve denom with common multiple
 	rhs.denom *= lhs.denom;
-	lhs.numer *= next.denom;			// Multiply lhs by original rhs denom to achieve equal denominator
+	lhs.numer *= next.denom;                                 // Multiply lhs by original rhs denom to achieve equal denominator
 	lhs.denom *= next.denom;
 
-	lhs.numer -= rhs.numer;				// Subtract numerators to complete operation
+	lhs.numer -= rhs.numer;                                  // Subtract numerators to complete operation
 
-	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));	// Reduce fraction
+	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));            // Reduce fraction
 
 	return lhs;
 }
@@ -211,16 +212,16 @@ Fraction Fraction::operator -(const Fraction& next)
   *      Overload multiplication operator to simply multiply fractions
   *
   * Params:
-  *     const Fraction& :  Address of the fraction to the right of the operator
+  *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	    :  Correctly multiplied and reduced fraction
+  *     Fraction         :  Correctly multiplied and reduced fraction
   */
 Fraction Fraction::operator *(const Fraction& next)
 {
 	Fraction temp;
-	temp.numer = this->numer * next.numer;		// Multiply numerators
-	temp.denom = this->denom * next.denom;		// Multiply denominators
+	temp.numer = this->numer * next.numer;                   // Multiply numerators
+	temp.denom = this->denom * next.denom;                   // Multiply denominators
 		
 	temp = reduce(temp, GCD(temp.numer, temp.denom));
 	
@@ -234,15 +235,15 @@ Fraction Fraction::operator *(const Fraction& next)
   *      Overload division operator to simply divide fractions
   *
   * Params:
-  *     const Fraction& :  Address of the fraction to the right of the operator
+  *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	      :  Correctly divided and reduced fraction
+  *      Fraction         :  Correctly divided and reduced fraction
   */
 Fraction Fraction::operator / (const Fraction& next)
 {
 	Fraction temp;
-	temp.numer = this->numer * next.denom; // Cross Multiply lhs and rhs to achieve division by fraction
+	temp.numer = this->numer * next.denom;                   // Cross Multiply lhs and rhs to achieve division by fraction
 	temp.denom = this->denom * next.numer;
 
 	temp = reduce(temp, GCD(temp.numer, temp.denom));
@@ -257,24 +258,24 @@ Fraction Fraction::operator / (const Fraction& next)
   *      Overload equal-to operator to simply check for equality of fractions
   *
   * Params:
-  *     const Fraction& :  Address of the fraction to the right of the operator
+  *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     bool			      :  Indication of fractions being equal to eachother, 
-  *                        regardless of the fractioning being fully reduced or not
+  *      bool            :  Indication of fractions being equal to eachother, 
+  *                         regardless of the fraction being fully reduced or not
   * 
   */
 bool Fraction::operator == (const Fraction& next)
 {
   Fraction lhs, rhs;
 
-  lhs.numer = this->numer;                        // Temporary assignment
+  lhs.numer = this->numer;                                    // Temporary assignment
   lhs.denom = this->denom;
 
-  rhs.numer = next.numer;                         // Temporary assignment
+  rhs.numer = next.numer;                                     // Temporary assignment
   rhs.denom = next.denom;
 
-  lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));   // Reduce temporary fractions
+  lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));               // Reduce temporary fractions
   rhs = reduce(rhs, GCD(rhs.numer, rhs.denom));
 
 	return (lhs.numer == rhs.numer && lhs.denom == rhs.denom);	//Equality Statement for bool
