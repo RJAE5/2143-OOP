@@ -157,7 +157,7 @@ Fraction Fraction::operator +(const Fraction& next)
 
 	lhs.numer += rhs.numer;                                  // Add numerators to complete operation
 
-	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));	           // Reduce fraction
+	lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));            // Reduce fraction
 
 	return lhs;
 }
