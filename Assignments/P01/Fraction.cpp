@@ -8,12 +8,12 @@
  * Public Methods:
  *            - Fraction()
  *            - Fraction(int n, int d)
- *	ostream   - operator << (ostream& os, const Fraction& next)
- *	Fraction  - operator + (const Fraction& next)
+ *  ostream   - operator << (ostream& os, const Fraction& next)
+ *  Fraction  - operator + (const Fraction& next)
  *  Fraction  - operator - (const Fraction& next)
  *  Fraction  - operator * (const Fraction& next)
  *  Fraction  - operator / (const Fraction& next)
- *	bool      - operator == (const Fration& next)
+ *  bool      - operator == (const Fration& next)
  *
  * Private Methods:
  *	int       - GCD(int a, int b)
@@ -172,7 +172,7 @@ Fraction Fraction::operator +(const Fraction& next)
   *      const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *      Fraction         :  Correctly subtracted and reduced fraction
+  *      Fraction        :  Correctly subtracted and reduced fraction
   */
 Fraction Fraction::operator -(const Fraction& next)
 {
@@ -278,7 +278,7 @@ bool Fraction::operator == (const Fraction& next)
   lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));               // Reduce temporary fractions
   rhs = reduce(rhs, GCD(rhs.numer, rhs.denom));
 
-	return (lhs.numer == rhs.numer && lhs.denom == rhs.denom);	//Equality Statement for bool
+	return (lhs.numer == rhs.numer && lhs.denom == rhs.denom);  //Equality Statement for bool
 }
 
 // End implementation
