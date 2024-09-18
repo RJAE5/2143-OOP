@@ -120,7 +120,7 @@ Fraction::Fraction(int n, int d)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     ostream&	    :  Fraction numerator followed by a "/" then the denominator
+  *     ostream&	      :  Fraction numerator followed by a "/" then the denominator
   */
 ostream& operator << (ostream& os, const Fraction& next)
 {
@@ -137,7 +137,7 @@ ostream& operator << (ostream& os, const Fraction& next)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	    :  Correctly added and reduced fraction
+  *     Fraction	      :  Correctly added and reduced fraction
   */
 Fraction Fraction::operator +(const Fraction& next)
 {
@@ -171,11 +171,11 @@ Fraction Fraction::operator +(const Fraction& next)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	    :  Correctly subtracted and reduced fraction
+  *     Fraction	      :  Correctly subtracted and reduced fraction
   */
 Fraction Fraction::operator -(const Fraction& next)
 {
-	if (this->denom == next.denom)				// Early Exit Conditional if denoms are already equal
+	if (this->denom == next.denom)				    // Early Exit Conditional if denoms are already equal
 	{
 		Fraction temp;
 		temp.numer = this->numer - next.numer;	// Operation stored in temp fraction
@@ -183,13 +183,13 @@ Fraction Fraction::operator -(const Fraction& next)
 		return temp;
 	}
 
-	Fraction lhs, rhs;					// create lhs and rhs fractions
+	Fraction lhs, rhs;					  // create lhs and rhs fractions
 	
 
 	lhs.numer = this->numer;			// Assignment for lhs fraction
 	lhs.denom = this->denom;
 
-	rhs = next;							// Assignment for rhs fraction
+	rhs = next;							      // Assignment for rhs fraction
 
 	rhs.numer *= lhs.denom;				// Multiply rhs by lhs denom to achieve denom with common multiple
 	rhs.denom *= lhs.denom;
@@ -237,7 +237,7 @@ Fraction Fraction::operator *(const Fraction& next)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     Fraction	    :  Correctly divided and reduced fraction
+  *     Fraction	      :  Correctly divided and reduced fraction
   */
 Fraction Fraction::operator / (const Fraction& next)
 {
@@ -260,18 +260,18 @@ Fraction Fraction::operator / (const Fraction& next)
   *     const Fraction& :  Address of the fraction to the right of the operator
   *
   * Returns:
-  *     bool			:  Indication of fractions being equal to eachother, 
-  *                  regardless of the fractioning being fully reduced or not
+  *     bool			      :  Indication of fractions being equal to eachother, 
+  *                        regardless of the fractioning being fully reduced or not
   * 
   */
 bool Fraction::operator == (const Fraction& next)
 {
   Fraction lhs, rhs;
 
-  lhs.numer = this->numer;    // Temporary assignment
+  lhs.numer = this->numer;                        // Temporary assignment
   lhs.denom = this->denom;
 
-  rhs.numer = next.numer;     // Temporary assignment
+  rhs.numer = next.numer;                         // Temporary assignment
   rhs.denom = next.denom;
 
   lhs = reduce(lhs, GCD(lhs.numer, lhs.denom));   // Reduce temporary fractions
