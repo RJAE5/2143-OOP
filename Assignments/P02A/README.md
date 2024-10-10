@@ -19,3 +19,5 @@ This portion of Program 2 serves as proof that we have successfully installed th
 - Compile the program and link it to ncurses library: `g++ hello_ncurses.cpp -o hello_ncurses -lncurses`
 - Run the compiled program: `./hello_ncurses`
 
+### Image Proof
+<img src=ncurses_proof.png width=1000>
