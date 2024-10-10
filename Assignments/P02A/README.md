@@ -6,10 +6,10 @@ This portion of Program 2 serves as proof that we have successfully installed th
 
 ### Files
 
-|   #   | File                 | Description                                        |
-| :---: | -------------------- | -------------------------------------------------- |
-|   1   | hello_ncurses.cpp    | Simple test program using ncurses                  |
-|   2   | ncurses_proof.png    | Image proof of running program                     |
+|   #   | File                                     | Description                       |
+| :---: | ---------------------------------------- | --------------------------------- |
+|   1   | [hello_ncurses.cpp](./hello_ncurses.cpp) | Simple test program using ncurses |
+|   2   | [ncurses_proof.png](./ncurses_proof.png) | Image proof of running program    |
 
 ### Instructions
 
