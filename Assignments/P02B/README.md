@@ -1,5 +1,5 @@
-## P02B - Class Design
-### Rykir Evans
+# P02B - Class Design
+## Rykir Evans
 
 ### Player Class
 * Data:
