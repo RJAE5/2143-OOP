@@ -1,4 +1,5 @@
 ## P02B - Class Design
 ### Rykir Evans
 
-* test
+* This is how you do a bullet point
+  * This is how you do a sub-bullet point
