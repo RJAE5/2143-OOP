@@ -52,37 +52,37 @@ class DiceViz {
         // Print dots based on the number on the dice
         switch (number) {
             case 1:
-                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "●");
+                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "*");
                 break;
             case 2:
-                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "●");
-                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "●");
+                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "*");
+                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "*");
                 break;
             case 3:
-                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "●");
-                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "●");
-                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "●");
+                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "*");
+                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "*");
+                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "*");
                 break;
             case 4:
-                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "●");
-                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "●");
-                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "●");
-                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "●");
+                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "*");
+                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "*");
+                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "*");
+                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "*");
                 break;
             case 5:
-                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "●");
-                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "●");
-                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "●");
-                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "●");
-                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "●");
+                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "*");
+                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "*");
+                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "*");
+                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "*");
+                mvwprintw(win, dot_pos["mm"].first, dot_pos["mm"].second, "*");
                 break;
             case 6:
-                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "●");
-                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "●");
-                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "●");
-                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "●");
-                mvwprintw(win, dot_pos["ml"].first, dot_pos["ml"].second, "●");
-                mvwprintw(win, dot_pos["mr"].first, dot_pos["mr"].second, "●");
+                mvwprintw(win, dot_pos["ul"].first, dot_pos["ul"].second, "*");
+                mvwprintw(win, dot_pos["ur"].first, dot_pos["ur"].second, "*");
+                mvwprintw(win, dot_pos["lr"].first, dot_pos["lr"].second, "*");
+                mvwprintw(win, dot_pos["ll"].first, dot_pos["ll"].second, "*");
+                mvwprintw(win, dot_pos["ml"].first, dot_pos["ml"].second, "*");
+                mvwprintw(win, dot_pos["mr"].first, dot_pos["mr"].second, "*");
                 break;
         }
         wattroff(win, COLOR_PAIR(dot_color));  // Turn off the color
