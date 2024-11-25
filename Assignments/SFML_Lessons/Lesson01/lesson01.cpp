@@ -24,9 +24,9 @@ sf::RenderWindow window(sf::VideoMode(1000, 1000), "Knucklebones Game");
         sf::Clock clock;
         
         // FPS Counter
-        sf::Time elapsed = clock.restart();
-        float fps = 1.0f / elapsed.asMicroseconds();
-        std::cout << "FPS: " << fps << std::endl;
+        // sf::Time elapsed = clock.restart();
+        // float fps = 1.0f / elapsed.asMicroseconds();
+        // std::cout << "FPS: " << fps << std::endl;
 
         // Clear the window with a specific color
         window.clear(sf::Color::Black);
