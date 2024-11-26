@@ -237,14 +237,14 @@ int main() {
         return -1;
     }
 
-    sf::Music music;
-    if (!music.openFromFile("./media/music/blade-soundtrack-1-blood-rave.mp3")) {
-        std::cerr << "Error loading music file!" << std::endl;
-        return -1;
-    }
-    music.setLoop(true);  // Loops the sound indefinitely
-    music.setVolume(50.f);
-    music.play();
+    // sf::Music music;
+    // if (!music.openFromFile("./media/music/blade-soundtrack-1-blood-rave.mp3")) {
+    //     std::cerr << "Error loading music file!" << std::endl;
+    //     return -1;
+    // }
+    // music.setLoop(true);  // Loops the sound indefinitely
+    // music.setVolume(50.f);
+    // music.play();
 
     // Create a sound and play it
     sf::Sound sound;
