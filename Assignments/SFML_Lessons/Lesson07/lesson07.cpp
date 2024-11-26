@@ -9,7 +9,7 @@ int main() {
 
     // Load font
     sf::Font font;
-    if (!font.loadFromFile("arial.ttf")) {
+    if (!font.loadFromFile("./../media/arial.ttf")) {
         // Handle error
         return -1;
     }

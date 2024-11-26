@@ -15,7 +15,7 @@ int main() {
 
     // Menu text
     sf::Font font;
-    if (!font.loadFromFile("arial.ttf")) {
+    if (!font.loadFromFile("./../media/arial.ttf")) {
         std::cerr << "Error loading font\n";
         return -1;
     }
