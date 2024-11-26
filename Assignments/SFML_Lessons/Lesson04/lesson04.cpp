@@ -9,7 +9,7 @@ int main() {
     std::vector<sf::Texture> textures;
     for (int i = 1; i <= 6; ++i) { // Assume dice frames are named frame1.png to frame6.png
         sf::Texture texture;
-        if (!texture.loadFromFile("frame" + std::to_string(i) + ".png")) {
+        if (!texture.loadFromFile("./../media/frame" + std::to_string(i) + ".png")) {
             std::cerr << "Error loading frame" << i << ".png" << std::endl;
             return -1;
         }
@@ -23,7 +23,7 @@ int main() {
 
     // Timing variables
     sf::Clock clock;
-    const sf::Time frameDuration = sf::milliseconds(25); // 200ms per frame
+    const sf::Time frameDuration = sf::milliseconds(100); // 200ms per frame
     size_t currentFrame = 0;
 
     // Main game loop
