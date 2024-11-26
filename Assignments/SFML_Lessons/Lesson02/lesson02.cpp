@@ -17,7 +17,7 @@ sf::RenderWindow window(sf::VideoMode(800, 600), "Knuckle Bones 02");
 
     // Load a texture
     sf::Texture texture;
-    if (!texture.loadFromFile("dice_face.png")) {
+    if (!texture.loadFromFile("./../media/dice_face.png")) {
         std::cerr << "Error: Could not load texture 'dice_face.png'\n";
         return -1;
     }
