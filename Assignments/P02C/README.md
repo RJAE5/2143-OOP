@@ -1,29 +1,26 @@
-# WIP
+## P03 - ncurses Knucklebones
+### Rykir Evans
+### Description:
 
-## Current error:
-The code currently runs, though the dice look funky.
-These warnings are displayed when I compile the code:
+This portion of Program 2 serves as the attempt at creating the Knucklebones game using ncurses.
+Unfortunately, it would never work as intended and we would ultimately end up switching to SFML to make Knucklebones.
+The code that works will allow you to roll a dice and input whatever number into the grid any number of times. 
 
+### Files
 
-```
-In file included from main.cpp:4:
-button_class.hpp: In member function ‘void Button::draw_button()’:
-button_class.hpp:48:18: warning: format not a string literal and no format arguments [-Wformat-security]
-   48 |         mvwprintw(button_win, hmiddle, wmiddle, text.c_str());
-      |         ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from dice_class.hpp:6,
-                 from main.cpp:6:
-logger_class.hpp: In static member function ‘static void Logger::printLastLine(WINDOW*)’:
-logger_class.hpp:117:18: warning: format not a string literal and no format arguments [-Wformat-security]
-  117 |         mvwprintw(win, 0, 0, lastLine.c_str());
-      |         ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from main.cpp:7:
-grid_class.hpp: In member function ‘void Grid::printValues()’:
-grid_class.hpp:86:30: warning: format not a string literal and no format arguments [-Wformat-security]
-   86 |                     mvwprintw(win, y, x, to_string(values[i][j]).c_str());
-      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from main.cpp:8:
-input_class.hpp: In member function ‘void Input::printBorder()’:
-input_class.hpp:60:18: warning: format not a string literal and no format arguments [-Wformat-security]
-   60 |         mvwprintw(input_win, 1, 1, prompt.c_str());  // Label inside the box
-```
+|   #   | File                                     | Description                       |
+| :---: | ---------------------------------------- | --------------------------------- |
+|   1   | [button_class.hpp](./button_class.hpp)   | Header for making a button        |
+|   2   | [color_class.hpp](./color_class.hpp)     | Header for setting up color       |
+|   3   | [dice_class.hpp](./dice_class.hpp)       | Header for making dice            |
+|   4   | [game.cpp](./game.cpp)                   | Main game running program         |
+|   5   | [grid_class.hpp](./grid_class.hpp)       | Header file for making a grid     | 
+|   6   | [input_class.hpp](./input_class.hpp)     | Header for handling input         |
+|   7   | [logger_class.hpp](./logger_class.hpp)   | Logger for errors and debugging   |
+
+### Instructions
+
+- If you plan to run the code...
+- Make sure you install library by using apt: `sudo apt install libncurses5-dev libncursesw5-dev`
+- Compile the program and link it to ncurses library: `g++ game.cpp -o main -lncurses`
+- Run the compiled program: `./main`
