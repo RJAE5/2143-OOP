@@ -5,7 +5,15 @@
 
 class UnameInput
 {
+    sf::Text prompt;
+    sf::Text credit;
+    sf::Text uName;
+    sf::Text title;
     sf::Font font;
+
+    sf::RectangleShape outline;
+
+    bool nameEntered;
 
 public:
 
@@ -15,72 +23,111 @@ public:
         if (!font.loadFromFile("./media/fonts/arial.ttf")) 
         {
             // Handle error
-            std::cout << "Error loading font!" << std::endl;
+            std::cerr << "Error loading font!" << std::endl;
         }
-    }
 
-    sf::Text getInput(sf::RenderWindow& window, std::string& userInput)
-    {
-        bool nameEntered = false;
-        
-        sf::Text prompt("Please enter your username: ", font, 24);
+        // Initialize Title
+        title.setString("Knucklebones");
+        title.setFont(font);
+        title.setCharacterSize(70);
+        title.setPosition(275, 300);
+        title.setFillColor(sf::Color::Cyan);
+
+        // Initialize Credit
+        credit.setString("By Rykir Evans");
+        credit.setFont(font);
+        credit.setCharacterSize(60);
+        credit.setPosition(275, 500);
+        credit.setFillColor(sf::Color::Magenta);
+
+        // Initialize Prompt
+        prompt.setString("Please enter your username below:");
+        prompt.setFont(font);
+        prompt.setCharacterSize(24);
         prompt.setPosition(300, 100);
-        prompt.setFillColor(sf::Color::Red);
+        prompt.setFillColor(sf::Color::Black);
 
-        sf::Text uName("", font, 24);
+        // Initalize uName
+        uName.setString("");
+        uName.setFont(font);
+        uName.setCharacterSize(24);
         uName.setFillColor(sf::Color::Green);
         uName.setPosition(300, 150);
 
-        sf::RectangleShape outline(sf::Vector2f(350.f, 50.f));
+        // Outline for aesthetics
+        outline.setSize(sf::Vector2f(350.f, 50.f));
         outline.setPosition(295.f, 145.f);
         outline.setFillColor(sf::Color::Black);
 
+        nameEntered = false;
+    }
+
+    void setTitle()
+    {
+        title.setCharacterSize(48);
+        title.setPosition(350, 475);
+    }
+    void drawTitle(sf::RenderWindow& window)
+    {
+        window.draw(title);
+    }
+
+    // Establish username input game state
+    sf::Text getInput(sf::RenderWindow& window, std::string& userInput)
+    {
         while(!nameEntered)
         {
+            // Start with blank window
             window.clear(sf::Color::White);
 
+            // Draw uname input items
+            window.draw(title);
+            window.draw(credit);
             window.draw(prompt);
             window.draw(outline);
             window.draw(uName);
             
-
+            // Listen for events
             sf::Event event;
             while (window.pollEvent(event))
             {
+                // Handle window closing
                 if (event.type == sf::Event::Closed)
                 {
                     window.close();
                     nameEntered = true;
                 }
 
+                // Capture input
                 if (event.type == sf::Event::TextEntered)
                 {
+                     // Handle backspace
                     if (event.text.unicode == '\b') 
                     {
-                        // Handle backspace
                         if (!userInput.empty()) 
                         {userInput.pop_back();}
                     }
-
+                    // Handle enter
                     else if (event.text.unicode == '\r') 
                     {
-                        // Handle enter
                         nameEntered = true;
                     } 
-
+                    // Handle valid characters
                     else if (event.text.unicode < 128) 
                     {
-                        // Handle valid characters
                         userInput += static_cast<char>(event.text.unicode);
                     }
-                    uName.setString(userInput);
-                    
-                }
 
-            }
-        window.display();  // Update window
-        }
+                    // Convert user input to sf::Text string
+                    uName.setString(userInput); 
+                }// End text event listening
+
+            }// End listening for events
+
+        // Update window
+        window.display();
+        } // End user input game state
+
     return uName;
     }
-
 };
