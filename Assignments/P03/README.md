@@ -27,8 +27,11 @@ Ultimately, Knucklebones attempted and succeeded to solidify the numerous OOP co
 - Make sure you install SFML by using apt: 
      - `sudo apt-get install libsfml-dev`(for Linux)
      - `brew install sfml` (for Mac)
-- Compile the program and link it to SFML libraiesy: `g++ -o main main.cpp -Ipath/to/sfml/include -Lpath/to/sfml/lib -lsfml-graphics -lsfml-window -lsfml-system`
-     - Alternatively, if applicable, use your own SFML compiler
+- Compile the program and link it to SFML libraies: 
+```
+g++ -o main main.cpp -Ipath/to/sfml/include -Lpath/to/sfml/lib -lsfml-graphics -lsfml-window -lsfml-system
+```
+- Alternatively, if applicable, use your own SFML compiler
 - Run the compiled program: `./main`
 
 **Gameplay**
