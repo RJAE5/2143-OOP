@@ -13,15 +13,17 @@ class Dice
     std::vector<sf::Texture> aniTextures;
     sf::Sprite aniSprite;
     sf::Clock clock;
-    sf::Time frameDuration;  // Frame duration (e.g., 100ms per frame)
+    sf::Time frameDuration;
     int currentFrame;
     int rollValue;
 
 
     void update() 
     {
+        // Check for frame time
         if (clock.getElapsedTime() >= frameDuration) 
         {
+            // Reset clock
             clock.restart();
 
             // Advance to the next frame
@@ -32,6 +34,7 @@ class Dice
 
     void loadAnimation()  
     {
+        // Initialize animation variables
         frameDuration = sf::milliseconds(25);
         currentFrame = 0;
 
@@ -45,12 +48,15 @@ class Dice
             if (!texture.loadFromFile("./media/animations/dice_roll/" + filename)) 
                 std::cerr << "Error loading " << filename << std::endl;
 
+            // Store in vector for easy playback
             aniTextures.push_back(texture);
         }
 
+        // Set beginning frame
         if (!aniTextures.empty()) 
             sprite.setTexture(aniTextures[currentFrame]);
     
+        // Location of bottom middle
         sprite.setPosition(400.f, 700.f);
     }
 
@@ -70,18 +76,21 @@ public:
         }
 
         sprite.setPosition(400.f, 700.f);
+
+        // Load animation frames
         loadAnimation();
     }
     
-
     void rollDiceAnimate(sf::RenderWindow& window)
     {
+        // Update animation and display to window
         update();
         display(window);    
     }
 
     void startRollAnimation()
     {
+        // Initialize animation preconditions
         clock.restart();
         currentFrame = 0;
         sprite.setTexture(aniTextures[currentFrame]);
@@ -95,6 +104,7 @@ public:
 
     void rollForValue()
     {
+        // Get actual dice value
         rollValue = (rand() % 6) + 1;
     }
 
