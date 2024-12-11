@@ -1,4 +1,4 @@
-## P03 - ncurses Knucklebones
+## P02C - ncurses Knucklebones
 ### Rykir Evans
 ### Description:
 
