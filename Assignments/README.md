@@ -7,3 +7,4 @@
 |  3  | [P02A](./P02A/README.md)  | [Proof of ncurses install](./P02A/README.md)                           |
 |  4  | [P02B](./P02B/README.md)  | [Game design prep](./P02B/README.md)                                   |
 |  5  | [P02C](./P02C/README.md)  | [Knucklebones Game using ncurses](./P02C/README.md)                    |
+|  6  | [P03](./P03/README.md)    | [Knucklebones Game using SFML](./P03/README.md)                        |
