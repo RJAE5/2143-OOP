@@ -1,3 +1,36 @@
+/*
+ * Grid Class
+ *
+ * Description:
+ *      This class contains methods for managing the game grid,
+ *      detecting grid input, and calculating the user's score
+ *      
+ *
+ * Public Methods:
+ *            - Grid()
+ *  void      - createGrid()
+ *  void      - drawGrid(sf::RenderWindow& window)
+ *  void      - drawBounds(sf::RenderWindow& window)
+ *  void      - drawGridText(sf::RenderWindow& window)
+ *  void      - inputGrid(int val, sf::Vector2i mousePos, bool& colClicked)
+ *  void      - calcScore()
+ *  int       - getScore()
+ *  bool      - isFull()
+ *  
+ *
+ * Private Methods:
+ *  void      - initGridTextPos(std::vector<sf::Text>& colVals, int col)
+ *  void      - calcColumnScore(std::vector<int>& column)
+ *  void      - calcScoreLogic(int val1, int val2, int val3)
+ * 
+ *
+ * Usage:
+ *
+ *       - This class is used to create an instance of the
+ *         grid, display the grid and numbers, and calculate 
+ *         the user's score based on grid values.
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -40,7 +73,21 @@ class Grid
     int score;
     sf::Font font;
 
-
+    /*
+    * Private : initGridTextPos
+    *
+    * Description:
+    *      Determine offset to display values in the correct
+    *      column, and calculate where in the grid to display
+    *      values from the value vectors.
+    *
+    * Params:
+    *     std::vector<sf::Text>& - The displayable numbers for the grid
+    *     int                    - The column in which the numbers are to be displayed
+    *
+    * Returns:
+    *     None
+    */
     void initGridTextPos(std::vector<sf::Text>& colVals, int col)
     {
         int offset;
@@ -64,7 +111,21 @@ class Grid
         } 
     }
 
-    void calcColumnScore(std::vector<int>& column) {
+    /*
+    * Private : calcColumnScore
+    *
+    * Description:
+    *      Calculates the score of a single column dependent
+    *      on how full it is and using calcScoreLogic().
+    *
+    * Params:
+    *     std::vector<int>& - The int values of a particular column
+    *
+    * Returns:
+    *     None
+    */
+    void calcColumnScore(std::vector<int>& column) 
+    {
         // Assign 3 temporary values to each column space if appropriately sized
         int val1 = column.size() >= 1 ? column[0] : 0;
         int val2 = column.size() >= 2 ? column[1] : 0;
@@ -75,6 +136,22 @@ class Grid
     }
 
 
+    /*
+    * Private : calcScoreLogic
+    *
+    * Description:
+    *      Applies the score multiplier rules of 
+    *      Knucklebones depending on matching
+    *      column values and adds it to global score
+    *
+    * Params:
+    *     int - First value of the column
+    *     int - Middle value of the column
+    *     int - Last value of the column
+    *
+    * Returns:
+    *     None
+    */
     void calcScoreLogic(int val1, int val2, int val3)
     {
         int addScore = 0;
@@ -113,9 +190,21 @@ class Grid
         score += addScore;
     }
 
-
-
 public:
+ /*
+  * Public : Grid
+  *
+  * Description:
+  *      Create and initialize and instance of the grid,
+  *      init display columns, init hitboxes, load font,
+  *      and init properties of displayed grid numbers.
+  *
+  * Params:
+  *     None
+  *
+  * Returns:
+  *     None
+  */
     Grid()
     {
         // General grid dimensions
@@ -145,9 +234,6 @@ public:
         col3.setPosition(hitColStartX + 220, hitColStartY);
         col3.setFillColor(sf::Color::Green);
 
-
-
-
         // Load font
         if (!font.loadFromFile("./media/fonts/arial.ttf")) 
         {
@@ -161,8 +247,20 @@ public:
         value.setCharacterSize(24);
         score = 0;
     }
-
     
+    /*
+    * Public : createGrid()
+    *
+    * Description:
+    *      Create 9 grid cells and push them to a vector
+    *      containing the cells to be displayed.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void createGrid()
     {
         // Initializing and creating the general grid
@@ -188,22 +286,58 @@ public:
         }
     }
 
+    /*
+    * Public : drawGrid
+    *
+    * Description:
+    *      Simple loop to draw every cell of the grid.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawGrid(sf::RenderWindow& window)
     {
         // Draw all grid cell
         for (const auto& cell : grid) 
         {window.draw(cell);}
     }
-
     
+    /*
+    * Public : drawBounds
+    *
+    * Description:
+    *      A debugging method to verify the position
+    *      of the hitboxes.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawBounds(sf::RenderWindow& window)
     {
-        // Debugging Method
+        // Shows bright colors of the hitboxes for debugging
         window.draw(col1);
         window.draw(col2);
         window.draw(col3);
     }
 
+    /*
+    * Public : drawGridText
+    *
+    * Description:
+    *      Display each value for each column
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawGridText(sf::RenderWindow& window)
     {
         // Draw loop for each value column
@@ -217,6 +351,23 @@ public:
         {window.draw(value);}
     }
 
+    /*
+    * Public : inputGrid
+    *
+    * Description:
+    *      Detects which column hitbox is clicked, and
+    *      adds both the display and integer value to
+    *      separate vectors before displaying and 
+    *      setting an exit flag to true.
+    *
+    * Params:
+    *     int          - Value of the dice being input into the grid
+    *     sf::Vector2i - Vector containing the mouse position
+    *     bool&        - Exit flag to ensure a column was clicked
+    *
+    * Returns:
+    *     None
+    */
     void inputGrid(int val, sf::Vector2i mousePos, bool& colClicked)
     {
         // Convert int from dice roll to string for sf::Text object
@@ -273,6 +424,20 @@ public:
   
     }
 
+    /*
+    * Public : calcScore()
+    *
+    * Description:
+    *      Resets score to ensure proper addition of score
+    *      before calculating the score of each column
+    *      by calling calcColumnScore().
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void calcScore()
     {
         // Reset score to add properly
@@ -284,10 +449,34 @@ public:
         calcColumnScore(gridNums3);
     }
 
-
+    /*
+    * Public : getScore
+    *
+    * Description:
+    *      Returns the global score value
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     int - The current score of the player
+    */
     int getScore()
     {return score;}
 
+    /*
+    * Public : isFull
+    *
+    * Description:
+    *      Returns a flag indicating whether or
+    *      not the entire grid is full
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     Bool - The flag to be returned
+    */
     bool isFull()
     {return (gridNums1.size() == 3 && gridNums2.size() == 3 && gridNums3.size() == 3);}
 

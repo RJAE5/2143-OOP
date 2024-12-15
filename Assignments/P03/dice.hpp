@@ -1,3 +1,33 @@
+/*
+ * Dice Class
+ *
+ * Description:
+ *      This class contains methods for rolling dice and primarily
+ *      managing the animation of the dice roll
+ *      
+ *
+ * Public Methods:
+ *            - Dice()
+ *  void      - rollDiceAnimate(sf::RenderWindow& window)
+ *  void      - startRollAnimation()
+ *  bool      - isRolling()
+ *  void      - display(sf::RenderWindow& window)
+ *  void      - rollForValue()
+ *  int       - getRollValue()
+ *  void      - setSpriteTexture(int i)
+ *  
+ *
+ * Private Methods:
+ *	void      - update()
+ *	void      - loadAnimation()  
+ *
+ * Usage:
+ *
+ *       - This class is used to create an instance of a die
+ *         used for animation, as well as handle rolling for
+ *         a value to be used in the game
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -18,6 +48,19 @@ class Dice
     int rollValue;
 
 
+ /*
+    * Private : update
+    *
+    * Description:
+    *      conditional function to perform an update of the rolling
+    *      animation for the die.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void update() 
     {
         // Check for frame time
@@ -32,6 +75,18 @@ class Dice
         }
     }
 
+    /*
+    * Private : loadAnimation
+    *
+    * Description:
+    *      Initialize animation frames and frame timing.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void loadAnimation()  
     {
         // Initialize animation variables
@@ -62,6 +117,19 @@ class Dice
 
 public:
 
+    /*
+    * Public : Dice
+    *
+    * Description:
+    *      Default constructor for dice, used to initialize
+    *      dice face textures, sprites, and call loadAnimation().
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     Dice()
     {
         // Load dice frames onto textures
@@ -81,6 +149,19 @@ public:
         loadAnimation();
     }
     
+    /*
+    * Public : rollDiceAnimate
+    *
+    * Description:
+    *      Call update() to progress the animation and
+    *      draw the new frame to the window.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void rollDiceAnimate(sf::RenderWindow& window)
     {
         // Update animation and display to window
@@ -88,6 +169,18 @@ public:
         display(window);    
     }
 
+    /*
+    * Public : startRollAnimation
+    *
+    * Description:
+    *      Initialize the roll animation before rolling.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void startRollAnimation()
     {
         // Initialize animation preconditions
@@ -96,22 +189,83 @@ public:
         sprite.setTexture(aniTextures[currentFrame]);
     }
 
+    /*
+    * Public : isRolling()
+    *
+    * Description:
+    *      Determines if the animation is currently in progress.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     Bool - The indicator of whether the die is rolling
+    */
     bool isRolling() const
     {return currentFrame < aniTextures.size() - 1;}
 
+    /*
+    * Public : display
+    *
+    * Description:
+    *      Draw the current die face.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void display(sf::RenderWindow& window)
     {window.draw(sprite);}
 
+    /*
+    * Public : rollForValue
+    *
+    * Description:
+    *      Generate a random number 1-6 inclusive.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void rollForValue()
     {
         // Get actual dice value
         rollValue = (rand() % 6) + 1;
     }
 
+    /*
+    * Public : getRollValue
+    *
+    * Description:
+    *      Gets the current value of the dice after
+    *      rollForValue() is called.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     int - The current rollValue of the die
+    */
     int getRollValue()
     {return rollValue;}
 
+    /*
+    * Public : setSpriteTexture
+    *
+    * Description:
+    *      Set the die face to the current value
+    *      of the rollValue.
+    *
+    * Params:
+    *     int - the current rollValue
+    *
+    * Returns:
+    *     None
+    */
     void setSpriteTexture(int i)
     {sprite.setTexture(textures[i]);}
-
 };

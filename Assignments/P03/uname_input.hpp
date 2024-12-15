@@ -1,3 +1,28 @@
+/*
+ * UnameInput Class
+ *
+ * Description:
+ *      This class contains methods for displaying the
+ *      username input game state and obtaining the
+ *      username of the player.
+ *      
+ *
+ * Public Methods:
+ *            - UnameInput()
+ *  void      - setTitle()
+ *  void      - drawTitle(sf::RenderWindow& window)
+ *  sf::Text  - getInput(sf::RenderWindow& window, std::string& userInput)
+ *  
+ *
+ * Private Methods:
+ * 
+ *
+ * Usage:
+ *
+ *       - This class is used to create an the username
+ *         input game state and obtain the username of
+ *         the player to be stored in the Player class.
+ */
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -17,6 +42,19 @@ class UnameInput
 
 public:
 
+    /*
+    * Public : UnameInput
+    *
+    * Description:
+    *      The default constructor for initializing
+    *      font and sf::Text objects.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     UnameInput()
     {
         // Load font
@@ -62,19 +100,59 @@ public:
         nameEntered = false;
     }
 
+    /*
+    * Public : setTitle
+    *
+    * Description:
+    *      Initialize sf::Text object characteristics
+    *      of the game title to be displayed
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void setTitle()
     {
         title.setCharacterSize(48);
         title.setPosition(350, 475);
     }
+
+    /*
+    * Public : drawTitle
+    *
+    * Description:
+    *      Displaying the title to the window.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawTitle(sf::RenderWindow& window)
     {
         window.draw(title);
     }
 
-    // Establish username input game state
+    /*
+    * Public : rollDiceAnimate
+    *
+    * Description:
+    *      Enter and maintain the username input
+    *      game state to capture input and save it.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *     std::string&      - The name input by the user
+    *
+    * Returns:
+    *     sf::Text          - The username as a displayable object
+    */
     sf::Text getInput(sf::RenderWindow& window, std::string& userInput)
     {
+        // Establish username input game state
         while(!nameEntered)
         {
             // Start with blank window

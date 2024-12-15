@@ -1,3 +1,31 @@
+/*
+ * Game Class
+ *
+ * Description:
+ *      This class contains methods for managing the prompts displayed
+ *      by the game as well as displaying the score of the player
+ *      
+ *
+ * Public Methods:
+ *            - Game()
+ *  void      - drawPrompt(sf::RenderWindow& window)
+ *  void      - drawFinalPrompt(sf::RenderWindow& window)
+ *  void      - setRollPrompt()
+ *  void      - setPlacePrompt()
+ *  void      - setGameOverPrompt(int s)
+ *  void      - drawScore(sf::RenderWindow& window, int s)
+ *  
+ *
+ * Private Methods:
+ * 
+ *
+ * Usage:
+ *
+ *       - This class is used to create an instance of the
+ *         game and manage the prompts to be displayed for
+ *         the user, as well as displaying player's score
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -5,16 +33,31 @@
 
 class Game
 {
-    sf::Text playerDisplayScore;
-    sf::Text prompt;
-    sf::Text finalPrompt;
-    sf::Font font;
-    int score;
+    sf::Text playerDisplayScore;  // Player's score to be displayed
+    sf::Text prompt;              // Variable prompt to be displayed
+    sf::Text finalPrompt;         // Prompt to be displayed in game over state
+    sf::Font font;                // Font object
+    int score;                    // Player's score value
 
-    Grid gameGrid;
+    Grid gameGrid;                // Instance of the grid object
 
 public:
 
+    /*
+    * Public : Game
+    *
+    * Description:
+    *      Overloaded constructor where grid instance is required,
+    *      loads the font, inits display score, inits prompts, and
+    *      assigns the grid to the gameGrid object.
+    *      
+    *
+    * Params:
+    *     Grid& - The grid instance to link
+    *
+    * Returns:
+    *     None
+    */
     Game(Grid& grid)
     {
          // Load font
@@ -48,12 +91,49 @@ public:
         gameGrid = grid;
     }
 
+    /*
+    * Public : drawPrompt
+    *
+    * Description:
+    *      Draws the variable prompt.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawPrompt(sf::RenderWindow& window)
     {window.draw(prompt);}
 
+    /*
+    * Public : drawFinalPrompt
+    *
+    * Description:
+    *      Draws the prompt for the game over state
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *
+    * Returns:
+    *     None
+    */
     void drawFinalPrompt(sf::RenderWindow& window)
     {window.draw(finalPrompt);}
 
+    /*
+    * Public : setRollPrompt
+    *
+    * Description:
+    *      Changes variable prompt to ask the player to roll
+    *      the dice.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void setRollPrompt()
     {
         // Roll instance of variable prompt
@@ -61,6 +141,19 @@ public:
         prompt.setPosition(250.f, 600.f);
     }
 
+    /*
+    * Public : setPlacePrompt
+    *
+    * Description:
+    *      Changes variable prompt to ask the user to
+    *      place the die value in the grid.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
     void setPlacePrompt()
     {
         // Place instance of variable prompt
@@ -68,6 +161,19 @@ public:
         prompt.setPosition(275.f,600.f);
     }
 
+    /*
+    * Public : setGameOverPrompt
+    *
+    * Description:
+    *      Initialize the game over prompt with
+    *      the final score of the player.
+    *
+    * Params:
+    *     int - The value of the final score
+    *
+    * Returns:
+    *     None
+    */
     void setGameOverPrompt(int s)
     {
         // Initialize variable prompt for game over state
@@ -77,7 +183,19 @@ public:
         finalPrompt.setFillColor(sf::Color::Red);
     }
 
-
+    /*
+    * Public : drawScore
+    *
+    * Description:
+    *      Draws the current score of the player.
+    *
+    * Params:
+    *     sf::RenderWindow& - The window to display to
+    *     int               - The current score of the player
+    *
+    * Returns:
+    *     None
+    */
     void drawScore(sf::RenderWindow& window, int s)
     {
         // Draw sf::Text score
