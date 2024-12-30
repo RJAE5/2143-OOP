@@ -480,4 +480,33 @@ public:
     bool isFull()
     {return (gridNums1.size() == 3 && gridNums2.size() == 3 && gridNums3.size() == 3);}
 
+    /*
+    * Public : wipe
+    *
+    * Description:
+    *      Completely clears grid elements
+    *      to restart the game
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
+    void wipe()
+    {
+        // Clear the sf::Text vectors
+        gridText1.clear();
+        gridText2.clear();
+        gridText3.clear();
+
+        // Clear the numerical vectors
+        gridNums1.clear();
+        gridNums2.clear();
+        gridNums3.clear();
+
+        // Set score to 0
+        score = 0;
+    }
+
 };
