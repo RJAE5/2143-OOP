@@ -116,7 +116,7 @@ public:
     void setTitle()
     {
         title.setCharacterSize(48);
-        title.setPosition(350, 475);
+        title.setPosition(340, 0);
     }
 
     /*
