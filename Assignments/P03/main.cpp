@@ -8,7 +8,7 @@
 #include "player.hpp"
 #include "dice.hpp"
 #include "game.hpp"
-
+#include "button.hpp"
 
 int main()
 {
@@ -35,6 +35,7 @@ int main()
     Player player(uName);
     Grid grid;
     Dice die;
+    Button button;
     Game game(grid);
 
     // Initalize the game elements
@@ -63,17 +64,21 @@ int main()
                 {
                     die.startRollAnimation();
                     rolling = true;
-
                 }
 
                 // Detect mouse clicks
                 else if (event.type == sf::Event::MouseButtonPressed) 
                 {
-                    if (event.mouseButton.button == sf::Mouse::Left && turn) 
+                    // Get mouse position relative to the window
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+                    if(!rolling && !turn && button.isButtonClicked(mousePos))
                     {
-                        // Get mouse position relative to the window
-                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-                        
+                        die.startRollAnimation();
+                        rolling = true;
+                    }
+                    if(event.mouseButton.button == sf::Mouse::Left && turn) 
+                    {
                         // Flag to ensure a hitbox column is clicked
                         bool colClicked = false;
 
@@ -83,10 +88,11 @@ int main()
                         {
                             turn = false;
                             game.setRollPrompt();
+                            button.setReady();
                             grid.calcScore();
                         }
                     }
-                }// End moust button
+                }// End mouse button event
             }// End if(!gameOver)
         }// End polling event
 
@@ -94,6 +100,7 @@ int main()
         if(rolling)
         {
             die.rollDiceAnimate(window);
+            button.setRolling();
 
             // If the animation has finished
             if (!die.isRolling())
@@ -102,6 +109,9 @@ int main()
                 rolling = false;  
                 die.rollForValue();
                 die.setSpriteTexture(die.getRollValue() - 1);
+
+                // Change button color and text to instruct the user to place the value
+                button.setInstruction();
 
                 // Enable turn flag
                 turn = true;
@@ -117,6 +127,7 @@ int main()
             gameOver = true;
             game.setGameOverPrompt(grid.getScore());
             game.drawFinalPrompt(window);
+            button.setGameOver();
         }
 
     // Draw elements
@@ -133,6 +144,7 @@ int main()
         die.display(window);
         window.draw(player.getName());
         uWin.drawTitle(window);
+        button.drawButton(window);
         
         // Show window
         window.display();
