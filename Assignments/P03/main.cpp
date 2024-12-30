@@ -16,6 +16,7 @@ int main()
     bool rolling = false;
     bool turn = false;
     bool gameOver = false;
+    bool restarting = false;
 
     // Create Game window
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "Knucklebones");
@@ -94,6 +95,16 @@ int main()
                     }
                 }// End mouse button event
             }// End if(!gameOver)
+
+            else // Enter if game is over
+            {
+                if (event.type == sf::Event::MouseButtonPressed)
+                {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    if(button.isButtonClicked(mousePos))
+                        restarting = true;
+                }
+            }
         }// End polling event
 
         // Animate dice roll if currently rolling
@@ -122,12 +133,29 @@ int main()
         }
 
         // Enter final game state
-        if(grid.isFull() && !gameOver)
+        if(grid.isFull() && !gameOver && !restarting)
         {
             gameOver = true;
             game.setGameOverPrompt(grid.getScore());
             game.drawFinalPrompt(window);
             button.setGameOver();
+        }
+
+        // Restart game elements
+        if(restarting)
+        {
+            // Reset initial flags
+            rolling = false;
+            turn = false;
+            gameOver = false;
+            restarting = false;
+
+            // Reset game elements
+            grid.wipe();
+            game.hideFinalPrompt();
+            game.setRollPrompt();
+            game.setScore(0);
+            button.setReady();
         }
 
     // Draw elements
