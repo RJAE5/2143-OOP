@@ -33,13 +33,15 @@
 
 class Game
 {
-    sf::Text playerDisplayScore;  // Player's score to be displayed
-    sf::Text prompt;              // Variable prompt to be displayed
-    sf::Text finalPrompt;         // Prompt to be displayed in game over state
-    sf::Font font;                // Font object
-    int score;                    // Player's score value
+    sf::Text playerDisplayScore;     // Player's score to be displayed
+    sf::Text playerDisplayHighScore; // Player's highest score to be displayed
+    sf::Text prompt;                 // Variable prompt to be displayed
+    sf::Text finalPrompt;            // Prompt to be displayed in game over state
+    sf::Font font;                   // Font object
+    int score;                       // Player's score value
+    int highScore;                   // Player's highest score
 
-    Grid gameGrid;                // Instance of the grid object
+    Grid gameGrid;                  // Instance of the grid object
 
 public:
 
@@ -68,6 +70,7 @@ public:
         }
 
         score = 0;
+        highScore = 0;
 
         // Initialize score to be displayed
         playerDisplayScore.setString("Current Score: " + std::to_string(score));
@@ -75,6 +78,13 @@ public:
         playerDisplayScore.setCharacterSize(24);
         playerDisplayScore.setPosition(775.f, 0.f);
         playerDisplayScore.setFillColor(sf::Color::Blue);
+
+        // Initialize score to be displayed
+        playerDisplayHighScore.setString("High Score: " + std::to_string(highScore));
+        playerDisplayHighScore.setFont(font);
+        playerDisplayHighScore.setCharacterSize(24);
+        playerDisplayHighScore.setPosition(775.f, 950.f);
+        playerDisplayHighScore.setFillColor(sf::Color::Blue);
 
         // Initialize variable prompt
         prompt.setFont(font);
@@ -198,8 +208,48 @@ public:
     */
     void drawScore(sf::RenderWindow& window, int s)
     {
+        // Determine if new high score needs to be set
+        if(s > highScore)
+        {
+            highScore = s;
+            playerDisplayHighScore.setString("High Score: " + std::to_string(highScore));
+        }
         // Draw sf::Text score
         playerDisplayScore.setString("Current Score: " + std::to_string(s));
+        
         window.draw(playerDisplayScore);
+        window.draw(playerDisplayHighScore);
     }
+
+    /*
+    * Public : setScore
+    *
+    * Description:
+    *      Sets the score variable, used
+    *      when restarting the game
+    *
+    * Params:
+    *     int  - The score to be set
+    *
+    * Returns:
+    *     None
+    */
+    void setScore(int i)
+    {score = i;}
+
+    /*
+    * Public : hideFinalPrompt
+    *
+    * Description:
+    *      Hides the final prompt that
+    *      shows the final score.
+    *
+    * Params:
+    *     None
+    *
+    * Returns:
+    *     None
+    */
+    void hideFinalPrompt()
+    {finalPrompt.setFillColor(sf::Color::White);}
 };
